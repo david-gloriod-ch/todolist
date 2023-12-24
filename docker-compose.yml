@@ -1,0 +1,93 @@
+version: '3.3'
+
+services:
+  api:
+    build: ./api
+    image: todolist/api
+    container_name: todolist_api
+    environment:
+      - DB_HOST=${POSTGRES_HOST}
+      - DB_PORT=${POSTGRES_PORT}
+      - DB_USERNAME=${POSTGRES_USERNAME}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_DATABASE=${POSTGRES_DATABASE}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - database
+    networks:
+      - david_gloriod_ch_todolist
+    restart: always
+    volumes:
+      - api:/var/www/html
+
+  client:
+    build: ./client
+    image: todolist/client
+    container_name: todolist_client
+    environment:
+      - API_URL=${API_URL}
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    depends_on:
+      - api
+    networks:
+      - david_gloriod_ch_todolist
+    restart: always
+    volumes:
+      - client:/var/www/html
+
+  database:
+    image: postgres:15.4
+    container_name: todolist_database
+    environment:
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - david_gloriod_ch_todolist
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    depends_on:
+      - database
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    networks:
+      - david_gloriod_ch_todolist
+    ports:
+      - 5050:80
+    restart: always
+
+networks:
+  david_gloriod_ch_todolist:
+    driver: bridge
+
+volumes:
+  database:
+    driver: local
+    driver_opts:
+      device: ./database
+      type: volume
+      o: bind
+  client:
+    driver: local
+    driver_opts:
+      device: ./client
+      type: volume
+      o: bind
+  api:
+    driver: local
+    driver_opts:
+      device: ./api
+      type: volume
+      o: bind
