@@ -16,7 +16,8 @@ services:
     depends_on:
       - database
     networks:
-      - david_gloriod_ch_todolist
+      - main
+      - todolist
     restart: always
 
   client:
@@ -30,7 +31,8 @@ services:
     depends_on:
       - api
     networks:
-      - david_gloriod_ch_todolist
+      - main
+      - todolist
     restart: always
 
   database:
@@ -45,7 +47,7 @@ services:
     volumes:
       - database:/var/lib/mysql
     networks:
-      - david_gloriod_ch_todolist
+      - todolist
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     restart: always
@@ -59,13 +61,13 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     networks:
-      - david_gloriod_ch_todolist
+      - todolist
     ports:
       - 5050:5051
     restart: always
 
 networks:
-  david_gloriod_ch_todolist:
+  todolist:
     driver: bridge
 
 volumes:
