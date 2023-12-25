@@ -47,6 +47,7 @@ services:
     volumes:
       - database:/var/lib/mysql
     networks:
+      - main
       - todolist
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
@@ -64,7 +65,6 @@ services:
       - todolist
     ports:
       - 5050:5051
-    restart: always
 
 networks:
   todolist:
