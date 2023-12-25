@@ -67,6 +67,8 @@ services:
       - 5050:5051
 
 networks:
+  main:
+    external: true
   todolist:
     driver: bridge
 
