@@ -19,6 +19,7 @@
 <script setup lang="ts">
 
 const path = useRoute().path;
+console.log(process.env.API_URL);
 
 if (process.client && path !== '/auth/login' && path !== '/auth/register')
 {
