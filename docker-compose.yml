@@ -26,8 +26,7 @@ services:
     container_name: todolist_client
     environment:
       - API_URL=${API_URL}
-    ports:
-      - ${CLIENT_PORT}:${CLIENT_PORT}
+      - NITRO_PORT=${CLIENT_PORT}
     depends_on:
       - api
     networks:
