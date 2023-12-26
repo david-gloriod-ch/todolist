@@ -13,6 +13,7 @@ services:
       - POSTGRES_DATABASE=${POSTGRES_DATABASE}
       - JWT_PRIVATE_KEY=${JWT_PRIVATE_KEY}
       - JWT_PUBLIC_KEY=${JWT_PUBLIC_KEY}
+      - SERVER_PORT=${SERVER_PORT}
     depends_on:
       - database
     networks:
