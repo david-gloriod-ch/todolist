@@ -30,7 +30,7 @@ dotenv.config();
 			database: process.env.POSTGRES_DATABASE,
 			entities: ['dist/**/*.entity{.ts,.js}'],
 			autoLoadEntities: true,
-			synchronize: process.env.NODE_ENV === 'dev',
+			synchronize: true,
 		}),
 		MulterModule.register({dest: '/storage'}),
 		AuthModule,
