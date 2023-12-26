@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: ['~/assets/styles/main.scss'],
-	ssr: false,
 	runtimeConfig: {
 		public: {
 			API_URL: process.env.API_URL
