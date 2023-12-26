@@ -41,9 +41,9 @@ services:
     container_name: todolist_database
     environment:
       - PGPORT=${POSTGRES_PORT}
-      - PGUSERNAME=${POSTGRES_USERNAME}
-      - PGPASSWORD=${POSTGRES_PASSWORD}
-      - PGDATABASE=${POSTGRES_DATABASE}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
     volumes:
       - database:/var/lib/mysql
     networks:
