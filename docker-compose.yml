@@ -11,8 +11,6 @@ services:
       - DB_USERNAME=${POSTGRES_USERNAME}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
       - DB_DATABASE=${POSTGRES_DATABASE}
-    ports:
-      - ${SERVER_PORT}:${SERVER_PORT}
     depends_on:
       - database
     networks:
