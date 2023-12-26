@@ -15,14 +15,6 @@ async function bootstrap() {
 		forbidNonWhitelisted: true,
 		forbidUnknownValues: true
 	}));
-	app.use(
-		session({
-			secret: process.env.SESSION_KEY,
-			resave: true,
-			saveUninitialized: true,
-			cookie: { sameSite: 'lax' }
-		}),
-	);
 
 	app.enableCors({
 		origin: process.env.CLIENT_URL,
