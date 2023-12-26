@@ -17,10 +17,8 @@ async function bootstrap() {
 	}));
 
 	app.enableCors({
-		origin: process.env.CLIENT_URL,
+		origin: '*',
 		credentials: true,
-		allowedHeaders: '*',
-		methods: '*'
 	});
 
 	await app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST);
