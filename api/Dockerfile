@@ -1,13 +1,7 @@
 FROM node:latest
 
-RUN mkdir -p /var/www/html
+COPY . .
 
-WORKDIR /var/www/html
+RUN npm i -g npm@latest && npm i && npm update && npm run build
 
-CMD ["sleep", "infinity"]
-
-# COPY . .
-
-# RUN npm i -g npm@latest && npm i && npm update && npm run build
-
-# CMD [ "node", "dist/main.js"]
+CMD [ "node", "dist/main.js"]

@@ -14,5 +14,8 @@ export default defineNuxtConfig({
 	modules: [
 		'@pinia/nuxt',
 		'nuxt-icon',
-	]
+	],
+	devServer: {
+		port: parseInt(`${process.env.CLIENT_PORT}`),
+	}
 })
