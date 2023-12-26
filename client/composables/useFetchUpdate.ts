@@ -2,11 +2,10 @@ export async function authorizedFetch<T>(url: string, opts: any = {})
 {
 	const runtimeConfig = useRuntimeConfig();
 
-	return await $fetch<T>(url, {
+	return await $fetch<T>(`/api${url}`, {
 		...opts,
 		onRequest({ options })
 		{
-			options.baseURL = runtimeConfig.public.API_URL,
 			options.credentials = 'include';
 		},
 		onRequestError({ request, options, error }) {
