@@ -61,8 +61,6 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     networks:
       - todolist
-    ports:
-      - 5050:5051
 
 networks:
   main:
