@@ -6,11 +6,11 @@ services:
     image: todolist/api
     container_name: todolist_api
     environment:
-      - DB_HOST=${POSTGRES_HOST}
-      - DB_PORT=${POSTGRES_PORT}
-      - DB_USERNAME=${POSTGRES_USERNAME}
-      - DB_PASSWORD=${POSTGRES_PASSWORD}
-      - DB_DATABASE=${POSTGRES_DATABASE}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
     depends_on:
       - database
     networks:
