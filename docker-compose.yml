@@ -46,8 +46,6 @@ services:
     networks:
       - main
       - todolist
-    ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     restart: always
 
   pgadmin:
