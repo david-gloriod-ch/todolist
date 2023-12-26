@@ -20,14 +20,13 @@ export class AuthController {
 	@Post('register')
 	async register(
 		@Request() request: ExpressRequest,
-		// @Response() response: ExpressResponse,
+		@Response() response: ExpressResponse,
 		@Body() datas: RegisterDto
 	)
 	{
 		const access_token = await this.authService.register(request, datas);
-		return access_token;
-		// response.cookie('authorization', access_token, {httpOnly: true});
-		// response.send();
+		response.cookie('authorization', access_token, {httpOnly: true});
+		response.send();
 	}
 
 	@Post('login')
